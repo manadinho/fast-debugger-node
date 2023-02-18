@@ -1,0 +1,14 @@
+{
+  "name": "fast-debugger",
+  "version": "1.0.1",
+  "description": "This is a package to send data to desktop application to show and debug issue",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "ws": "^7.5.3"
+  },
+  "author": "Muhammad Imran Israr",
+  "license": "MIT"
+}
