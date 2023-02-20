@@ -16,4 +16,4 @@ module.exports = function fast(...args) {
     filePath = filePath.slice(0, index);
   }
   return new FastDebugger(filePath, ...args);
-};
+}; 
