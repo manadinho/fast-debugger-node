@@ -1,6 +1,6 @@
 {
   "name": "fast-debugger",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "This is a package to send data to desktop application to show and debug issue",
   "main": "index.js",
   "scripts": {
@@ -10,5 +10,9 @@
     "ws": "^7.5.3"
   },
   "author": "Muhammad Imran Israr",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/manadinho/fast-debugger-node.git"
+  }
 }

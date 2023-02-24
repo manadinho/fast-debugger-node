@@ -5,9 +5,9 @@ First install `Fast Debugger` desktop application according your operating syste
 Now you are ready to receive log data from `Laravel` or `Node` projects.
 
 ## download desktop application
-[mac](https://drive.google.com/file/d/1LKXWI8x8jiLawN5b9qmv_pV3djYsAzh6/view?usp=share_link).
-[windows](https://drive.google.com/file/d/1AmpOiaD7kWe1DetkNWuVTE4TNb6647Dq/view?usp=share_link).
-[linux](https://drive.google.com/file/d/1zDwRCBDEgDSAYlzS4gD_8o6wKRkfDe4f/view?usp=share_link).
+[mac](https://drive.google.com/file/d/1H5w6VxHysvQiOa-jqNHPYD_QJ5shfb6h/view?usp=share_link).
+[windows](https://drive.google.com/file/d/1Qka8i_sho0fMh6jtlnyPs2SqmQfnwGBl/view?usp=share_link).
+[linux](https://drive.google.com/file/d/1gMa93ujkEUpCzPdUkxivNilvNxkVQqZv/view?usp=share_link).
 
 
 ## installation
@@ -20,33 +20,46 @@ To use Fast Debugger first require or import `fast-debugger`
 
 ```js
 // es module import:
-import fastDebugger from 'fast-debugger';
+import { fast, exceptionHandler } from 'fast-debugger';
 
 // commonjs import:
-const fastDebugger = require('fast-debugger');
+const { fast, exceptionHandler } = require('fast-debugger');
 ```
 
 To log your data
 
 ```js
-fastDebugger('FAST DEBUGGER IS WORKING');
+fast('FAST DEBUGGER IS WORKING');
 ```
 
 You can specify flag to identify your specific log by chainig `flag()` method
 
 ```js
-fastDebugger('FAST DEBUGGER IS WORKING').flag('FLAG TO IDENTIFY');
+fast('FAST DEBUGGER IS WORKING').flag('FLAG TO IDENTIFY');
 ```
 
-On log data you can see file name and line number from the `fastDebugger()` method is called. You can open file in `VSCODE` by simply clicking on file name.
+On log data you can see file name and line number from the `fast()` method is called. You can open file in `VSCODE` by simply clicking on file name.
 
 ## Note
 
-If want to use `fastDebugger()` method without `require` or `import` statement. You can achieve this by `global` scope.
+If want to use `fast()` method without `require` or `import` statement. You can achieve this by `global` scope.
 `Note: Be very careful with this approach`
 
 In your entry file mostly is `index.js`
 
 ```js
-global.fastDebugger = require('fast-debugger');
+const { fast } = require('fast-debugger');
+global.fast = fast;
+```
+
+## Exception Handler
+
+To handle or capture Exceptions. Here we have `Express.js` example. Create a middleware to handle exceptions.
+
+```js
+const { exceptionHandler } = require('fast-debugger');
+
+module.exports = (_err, _req, _res, _next) => {
+  exceptionHandler(_err);
+};
 ```

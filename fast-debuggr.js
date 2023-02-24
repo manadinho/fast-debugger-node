@@ -15,33 +15,36 @@ function FastDebugger(filePath, ...args) {
   };
 
   this.generateData = () => {
-    return this.args.map((arg) => {
-      if (Array.isArray(arg)) {
-        const _data = arg.map((_arg) => {
-          // TO CHECK SEQUELIZE OBJEC
-          if (_arg.hasOwnProperty('dataValues')) {
-            return { sequelize: { data: _arg.dataValues } };
-          }
-          return _arg;
-        });
+    try {
+      return this.args.map((arg) => {
+        if (Array.isArray(arg)) {
+          const _data = arg.map((_arg) => {
+            // TO CHECK SEQUELIZE OBJEC
+            if (_arg.hasOwnProperty('dataValues')) {
+              return { sequelize: { data: _arg.dataValues } };
+            }
+            return _arg;
+          });
 
-        return { array: _data };
-      }
-
-      if (typeof arg === 'object') {
-        // TO CHECK SEQUELIZE OBJEC
-        if (arg.hasOwnProperty('dataValues')) {
-          return {
-            sequelize: {
-              tableName: arg._modelOptions.tableName,
-              data: arg.dataValues,
-            },
-          };
+          return { array: _data };
         }
-      }
 
-      return { [typeof arg]: arg };
-    });
+        if (typeof arg === 'object') {
+          // TO CHECK SEQUELIZE OBJEC
+          if (arg.hasOwnProperty('dataValues')) {
+            return {
+              sequelize: {
+                tableName: arg._modelOptions.tableName,
+                data: arg.dataValues,
+              },
+            };
+          }
+        }
+
+        return { [typeof arg]: arg };
+      });
+    } catch (error) {
+    }
   };
 
   this.send = () => {
